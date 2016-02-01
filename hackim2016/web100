@@ -4,7 +4,7 @@ There was a web page that let us upload any document, signs it and returns
 serialized java object in the xml format. Then you can submit back that xml to verify.
 
 Sample signed document looks like below
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_72-internal" class="java.beans.XMLDecoder">
  <object class="models.CTFSignature" id="CTFSignature0">
@@ -28,7 +28,7 @@ Sample signed document looks like below
 
 I thought uploading custom serialized code would do the job.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_72-internal" class="java.beans.XMLDecoder">
  <object class="models.CTFSignature" id="CTFSignature0">
