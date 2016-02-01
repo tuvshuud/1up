@@ -7,7 +7,7 @@ to the server. Initially we thought it's 25 repititive tasks. But it's way more 
 Challenge format is as follows 
 ```
 Challenge score (0/25)
-[challenge]-[decoded_text]
+[encoding]-[encoded_text]
 ```
 
 We wrote python script to get the flag.
